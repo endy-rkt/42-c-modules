@@ -6,31 +6,23 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:50:50 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/09 15:39:36 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:52:02 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.hpp"
 
-int	ft_strcmp(std::string a, std::string b)
-{
-	int	i;
-
-	i = 0;
-	while (a[i] && b[i])
-	{
-		if (a[i] != b[i])
-			return (a[i] - b[i]);
-		i++;
-	}
-	return (0);
-}
-
 void	print_info(std::string info)
 {
 	int	i;
+	int	infoLength;
 
 	i = 0;
+	infoLength = info.length();
+	for (int i = 0; i < (10 - infoLength); i++)
+	{
+		std::cout << " ";
+	}
 	for (i = 0; i < (int)info.length(); i++)
 	{
 		if (i == 9)
@@ -39,11 +31,6 @@ void	print_info(std::string info)
 			break ;
 		}
 		std::cout << info[i];
-	}
-	while (i < 9)
-	{
-		std::cout << " ";
-		i++;
 	}
 }
 
@@ -62,9 +49,13 @@ void	select_contact(PhoneBook *my_phone)
 	Contact	contact;
 
 	index = get_index("Please enter the contact index (between 0 to 7): ");
-	index %=  8;
+	while (!(index >= 0 && index <= 7))
+	{
+		index = get_index("Out of range index. Please enter the contact index (between 0 to 7): ");
+	}
 	contact = my_phone->search_contact(index);
 	contact.print_contact_info(index);
+
 }
 
 void	add_new_contact(PhoneBook *my_phone)
@@ -83,17 +74,18 @@ void	add_new_contact(PhoneBook *my_phone)
 	std::cout << "User added successfully!!!!\n";
 }
 
-void	execute_cmd(std::string input, PhoneBook *my_phone)
+int	execute_cmd(std::string input, PhoneBook *my_phone)
 {
-	if (ft_strcmp(input, "EXIT") == 0)
-		exit(EXIT_SUCCESS);
-	else if (ft_strcmp(input, "ADD") == 0)
+	if (input == "EXIT")
+		return (1);
+	else if (input == "ADD")
 		add_new_contact(my_phone);
-	else if (ft_strcmp(input, "SEARCH") == 0)
+	else if (input == "SEARCH")
 		select_contact(my_phone);
-	else if (ft_strcmp(input, "HELP") == 0)
+	else if (input == "HELP")
 		show_help_info();
 	else
 		std::cout << "Command not recognized, please retry.\n";
 	std::cout << "------------------------------------------------------------------\n\n";
+	return (0);
 }

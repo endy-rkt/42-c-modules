@@ -4,6 +4,8 @@ OBJS = ${SRCS:.cpp=.o}
 
 CC = c++
 
+OPT_FLAGS = -std=c++98 -g
+
 CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
