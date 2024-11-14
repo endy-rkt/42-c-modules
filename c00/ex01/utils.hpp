@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:34:52 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/13 12:50:48 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:50:24 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 #include <iostream>
 
 #include <string>
-
-#include <cstdlib>
 
 #include "Contact.hpp"
 

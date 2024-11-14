@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 05:48:11 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/07 06:29:22 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:59:00 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main()
 
 		HumanA bob("Bob", club);
 		bob.attack();
-		club.setType("some other type of club");
+		club.setType("some other type of club0");
 		bob.attack();
 	}
 	{

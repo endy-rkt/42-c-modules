@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 03:57:35 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/07 04:32:41 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:39:22 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Zombie::Zombie( std::string name )
 
 Zombie::Zombie( void )
 {
-	this->name.clear();
+	this->name = "Zombie";
 }
 
 void	Zombie::announce( void )

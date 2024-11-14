@@ -6,76 +6,88 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 07:20:42 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/07 13:28:19 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/14 14:26:41 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.hpp"
 
-void	readFile(std::string filename)
+std::string	formatLine(std::string line, std::string s1, std::string s2)
 {
-	std::string	line;
+	int	s1Len;
+	int	stop;
+	int	i;
+	std::string	newLine;
 
-	std::ifstream MyReadFile(filename);
-	while (getline (MyReadFile, line)) 
+	s1Len = s1.length();
+	stop = line.find(s1);
+	newLine = "";
+	i = 0;
+	while (i < (int)line.length())
 	{
-  		std::cout << line << std::endl;
-	}
-	MyReadFile.close();
-}
-
-int	ft_strnstr(std::string srcStr, std::string toFind)
-{
-	int	j;
-	int	lenToind;
-	int	lenSrcStr;
-
-	lenToind = toFind.length();
-	lenSrcStr = srcStr.length();
-	for (int i = 0; i < lenSrcStr; i++)
-	{
-		j = i;
-		for (int k = 0; k < lenToind; k++)
+		if (stop == i)
 		{
-			if (srcStr[j] != toFind[k])
-				break ;
-			j++;
+			newLine = newLine + s2;
+			i += s1Len;
+			stop = line.find(s1, stop);
 		}
-		if (j == lenToind)
-			return (i);
+		else
+		{
+			newLine += line[i];
+			i++;
+		}
 	}
-	return (-1);
+	line.clear();
+	return (newLine);
 }
 
-void	createFile(std::string filename)
+int	validateReadFile(std::ifstream &MyReadFile, std::string filename)
 {
-	std::string	line;
-	std::string	newFileContent;
-	std::string	newFile;
-
-	std::ifstream MyReadFile(filename);
-	newFile = filename + ".replace";
-	std::ofstream MyNewFile(newFile);
-	while (getline (MyReadFile, line)) 
+	if (!MyReadFile.is_open()) 
 	{
-		if (newFileContent.empty())
-			newFileContent = "";
-		newFileContent += line;
-		newFileContent += '\n';
-	}
-	MyNewFile << newFileContent;
-	MyNewFile.close();
-	MyReadFile.close();
+        std::cerr << "Error: Unable to create or open the file " << filename << std::endl;
+        MyReadFile.close();
+        return (0);
+    }
+	return (1);
+}
+
+int	validateNewFile(std::ifstream &MyReadFile, std::ofstream &MyNewFile, std::string newFilename)
+{
+	if (!MyNewFile.is_open()) 
+	{
+        std::cerr << "Error: Unable to create or open the file " << newFilename << std::endl;
+        MyReadFile.close();
+		MyNewFile.close();
+        return (0);
+    }
+	return (1);
 }
 
 void	copyAndReplace(std::string filename, std::string s1, std::string s2)
 {
-	int	s1Len = s1.length();
-	int	s2Len = s2.length();
+	std::string	line;
+	std::string	newLine;
+	std::string	newFilename;
 
-	if (s1Len < s2Len)
+	std::ifstream MyReadFile(filename.c_str());
+	if (!validateReadFile(MyReadFile, filename))
 		return ;
-	createFile(filename);
+	newFilename = filename + ".replace";
+	std::ofstream MyNewFile(newFilename.c_str());
+	if (!validateNewFile(MyReadFile, MyNewFile, newFilename))
+		return ;
+	while (getline (MyReadFile, line)) 
+	{
+		if (newLine.empty())
+			newLine = "";
+		line = formatLine(line, s1, s2);
+		newLine += line;
+		newLine = newLine + "\n";
+	}
+	MyNewFile << newLine;
+	MyNewFile.close();
+	MyReadFile.close();
 }
 
 int	main(int argc, char **argv)

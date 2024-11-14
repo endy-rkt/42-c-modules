@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 05:03:34 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/07 06:01:59 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/14 09:51:52 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Weapon::Weapon( void )
 {
-	this->type = "";
+	this->type = "bare hand";
 }
 
 Weapon::Weapon( std::string type)

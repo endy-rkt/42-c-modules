@@ -6,9 +6,11 @@ CC = c++
 
 CFLAGS = -Wall -Wextra -Werror
 
+OPT_FLAG = -std=c++98 -g
+
 RM = rm -f
 
-NAME = zombie
+NAME = zombieHorde
 
 ${NAME}:	${OBJS}
 			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
