@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "iosfwd": "cpp",
+        "*.tcc": "cpp",
+        "compare": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp"
+    }
+}
