@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:43:25 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/22 10:29:39 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/22 12:52:55 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,13 @@ float   Fixed::min( const Fixed & a, const Fixed & b )
     return (nb);    
 }
 
-// int     Fixed::min( const Fixed & a, const Fixed & b ) const
-// {
-//     int   nb;
+float     Fixed::min( Fixed & a, Fixed & b )
+{
+    int   nb;
 
-//     nb = a.getRawBits() < b.getRawBits() ? a.toInt() : b.toInt();
-//     return (nb);   
-// }
+    nb = a.getRawBits() < b.getRawBits() ? a.toInt() : b.toInt();
+    return (nb);   
+}
 
 float   Fixed::max( const Fixed & a, const Fixed & b )
 {
@@ -132,13 +132,13 @@ float   Fixed::max( const Fixed & a, const Fixed & b )
     return (nb);    
 }
 
-// int     Fixed::max( const Fixed & a, const Fixed & b ) const
-// {
-//     int   nb;
+float     Fixed::max( Fixed & a, Fixed & b )
+{
+    int   nb;
 
-//     nb = a.getRawBits() > b.getRawBits() ? a.toInt() : b.toInt();
-//     return (nb);   
-// }
+    nb = a.getRawBits() > b.getRawBits() ? a.toInt() : b.toInt();
+    return (nb);   
+}
 
 //---------------------------------------------------operator overload---------------------------------------------------
 
@@ -199,15 +199,15 @@ Fixed    operator*(const Fixed & a, const Fixed & b)
 
 Fixed   operator/(const Fixed & a, const Fixed & b)
 {
-    Fixed result;
-
     if (b.getRawBits() != 0)
-        result = Fixed(a.toFloat() / b.toFloat());
-    else if (a.getRawBits() < 0)
-        result.setRawBits(std::numeric_limits<int>::min());
+        return (Fixed(a.toFloat() / b.toFloat()));
+
+    std::cout << "Error division by zero!!!" << std::endl;
+    
+    if (a.getRawBits() < 0)
+        return (Fixed(std::numeric_limits<int>::min() >> 8));
     else
-        result.setRawBits(std::numeric_limits<int>::max());
-    return (result);
+        return (Fixed(std::numeric_limits<int>::max() >> 8));
 }
 
 Fixed & Fixed::operator++( void )
