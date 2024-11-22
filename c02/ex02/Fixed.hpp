@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:39:59 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/21 11:08:09 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/22 09:37:58 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 #include <string>
 
+#include <limits>
+
 #include <cmath>
 
 class Fixed
@@ -26,23 +28,46 @@ class Fixed
         int                 _nbValue;
         static int const    _bitValue;
     public:
+        //constructor
         Fixed( void );
         ~Fixed( void );
         Fixed( int const nbValue );
         Fixed( float const nbValue );
         Fixed( const Fixed & copy );
         Fixed   & operator=(Fixed const & copy);
+
+        //method
         int     getRawBits( void ) const;
         void    setRawBits( float const raw );
         void    setRawBits( int const raw );
         float   toFloat( void ) const;
         int     toInt( void ) const;
-        float   min( const Fixed & a, const Fixed & b );
-        int     min( const Fixed & a, const Fixed & b );
-        float   max( const Fixed & a, const Fixed & b );
-        int     max( const Fixed & a, const Fixed & b );
+        static float   min( const Fixed & a, const Fixed & b );
+        // int     min( const Fixed & a, const Fixed & b ) const;
+        static float   max( const Fixed & a, const Fixed & b );
+        // int     max( const Fixed & a, const Fixed & b ) const;
+
+        //operator overload
+                /*comparaison operator*/
+        bool    operator>(const Fixed & a) const;
+        bool    operator<(const Fixed & a) const;
+        bool    operator>=(const Fixed & a) const;
+        bool    operator<=(const Fixed & a) const;
+        bool    operator==(const Fixed & a) const;
+        bool    operator!=(const Fixed & a) const;
+                /*incrementation operator*/
+        Fixed & operator++( void ); //pre
+        Fixed   operator++( int ); //post
+        Fixed & operator--( void ); //pre
+        Fixed   operator--( int ); //post
+
 };
 
 std::ostream & operator<<(std::ostream & o, Fixed const & nb);
+                /*arithmetic operator*/
+Fixed   operator+(const Fixed & a, const Fixed & b);
+Fixed   operator-(const Fixed & a, const Fixed & b);
+Fixed   operator*(const Fixed & a, const Fixed & b);
+Fixed   operator/(const Fixed & a, const Fixed & b);
 
 #endif
