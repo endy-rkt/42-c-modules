@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 08:26:08 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/15 09:06:31 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:57:49 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,25 @@ void Harl::error( void )
     std::cout << "This is unacceptable! I want to speak to the manager now." << std::endl;
 }
 
-
 void Harl::complain( std::string level )
 {
-    std::map<std::string, void (Harl::*)()> myMap;
-    myMap["debug"] = &Harl::debug;
-    myMap["info"] = &Harl::info;
-    myMap["warning"] = &Harl::warning;
-    myMap["error"] = &Harl::error;
-
-    if (myMap.find(level) != myMap.end()) 
-    {
-        (this->*myMap[level])();
-    } else 
-    {
-        std::cout << "Unknown level: " << level << std::endl;
-    }
+    Harl harl;
+    int i;
+    
+    s_harl harlStruct[] = {
+        {"DEBUG", &Harl::debug},
+        {"INFO", &Harl::info},
+        {"WARNING", &Harl::warning},
+        {"ERROR", &Harl::error}
+    };
+   for (i = 0; i < 4; i++)
+   {
+        if (level == harlStruct[i].type)
+        {
+             (harl.*(harlStruct[i].complainFunction))();
+             return ;
+        }
+   }
+   if (i == 4)
+    std::cout << "Probably complaining about insignificant problems" << std::endl;
 }

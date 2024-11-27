@@ -10,7 +10,7 @@ OPT_FLAG = -std=c++98 -g
 
 RM = rm -f
 
-NAME = harl
+NAME = harlFilter
 
 ${NAME}:	${OBJS}
 			${CC} ${CFLAGS} ${SRCS} -o ${NAME}

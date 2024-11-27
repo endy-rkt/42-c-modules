@@ -6,35 +6,21 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 08:26:17 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/15 09:07:17 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/27 14:58:48 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main()
+int main(int argc, char **argv)
 {
-    Harl test;
+    Harl harl;
 
-    std::cout << "debug:" << std::endl;
-    test.complain("debug");
-    std::cout << std::endl;
-
-    std::cout << "info:" << std::endl;
-    test.complain("info");
-    std::cout << std::endl;
-
-    std::cout << "warning:" << std::endl;
-    test.complain("warning");
-    std::cout << std::endl;
-
-    std::cout << "error:" << std::endl;
-    test.complain("error");
-    std::cout << std::endl;
-
-    std::cout << "valgrind:" << std::endl;
-    test.complain("valgrind");
-    std::cout << std::endl;
-    
+    if (argc == 1)
+    {
+        std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+        return (0);
+    }
+    harl.complain(argv[1]);
     return (0);
 }

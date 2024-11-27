@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 08:26:26 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/27 14:28:01 by trazanad         ###   ########.fr       */
+/*   Created: 2024/11/21 09:38:33 by trazanad          #+#    #+#             */
+/*   Updated: 2024/11/27 14:09:14 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
+#include "ClapTrap.hpp"
 
-# define HARL_HPP
-
-#include <iostream>
-#include <string>
-#include <map>
-
-class Harl
+int main()
 {
-    private:
-        void debug( void );
-        void info( void );
-        void warning( void );
-        void error( void );
-    public:
-        void complain( std::string level );
-};
+    ClapTrap claptrap("Clappy");
 
-struct  s_harl
-{
-    std::string type;
-    void (Harl::*complainFunction)();
-};
+    claptrap.attack("Target1");
 
-#endif
+    claptrap.takeDamage(3);
+
+    claptrap.beRepaired(5);
+
+    for (int i = 0; i < 11; ++i) {
+        claptrap.attack("Target2");
+    }
+
+    claptrap.takeDamage(15);
+    claptrap.attack("Target3");
+    claptrap.beRepaired(10);
+
+    return 0;
+}
