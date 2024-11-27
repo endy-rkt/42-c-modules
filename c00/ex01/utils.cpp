@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:50:50 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/13 12:52:02 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:13:16 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,33 @@ void	show_help_info()
 	std::cout << "EXIT:\nterminate the program\n";
 }
 
+bool	printRawTable(PhoneBook *my_phone)
+{
+	int		index;
+	Contact contact;
+
+	for (index = 0; index < 8; index++)
+	{
+		contact = my_phone->search_contact(index);
+		if (contact.get_first_name().empty())
+			break ;
+		contact.print_contact_info(index);
+	}
+	if (index == 0)
+	{
+		std::cout << "No contact with this index yet." << std::endl;
+		return (false);
+	}
+	return (true);
+}
+
 void	select_contact(PhoneBook *my_phone)
 {
 	int		index;
 	Contact	contact;
 
+	if (!printRawTable(my_phone))
+		return ;
 	index = get_index("Please enter the contact index (between 0 to 7): ");
 	while (!(index >= 0 && index <= 7))
 	{
@@ -55,7 +77,6 @@ void	select_contact(PhoneBook *my_phone)
 	}
 	contact = my_phone->search_contact(index);
 	contact.print_contact_info(index);
-
 }
 
 void	add_new_contact(PhoneBook *my_phone)

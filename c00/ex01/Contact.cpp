@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:30:54 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/13 12:48:51 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:09:39 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	Contact::print_contact_info(int	index)
 	if (this->first_name.empty() && this->last_name.empty() 
 		&& this->nickname.empty())
 	{
-		std::cout << "No contact with this index yet.\n";
+		std::cout << "No contact with this index yet." << std::endl;
 		return ;
 	}
 	std::cout  << "        " <<  index << " | ";

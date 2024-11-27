@@ -10,7 +10,11 @@ OPT_FLAGS = -std=c++98 -g
 
 RM = rm -f
 
-NAME = my_phone
+NAME = phoneBook
+
+%.o: %.cpp
+	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@
+
 
 ${NAME}:	${OBJS}
 			${CC} ${CFLAGS} ${SRCS} -o ${NAME}

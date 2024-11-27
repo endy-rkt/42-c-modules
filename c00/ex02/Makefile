@@ -10,8 +10,11 @@ RM = rm -f
 
 NAME = account
 
+%.o: %.cpp
+	${CC}  -c $< -o $@
+
 ${NAME}:	${OBJS}
-			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
+			${CC}  ${SRCS} -o ${NAME}
 
 all:	${NAME}
 

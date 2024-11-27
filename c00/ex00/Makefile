@@ -12,6 +12,9 @@ RM = rm -f
 
 NAME = megaphone
 
+%.o: %.cpp
+	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@
+
 ${NAME}:	${OBJS}
 			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
 
