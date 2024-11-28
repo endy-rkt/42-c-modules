@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 07:20:42 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/14 14:26:41 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 14:14:25 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ std::string	formatLine(std::string line, std::string s1, std::string s2)
 	std::string	newLine;
 
 	s1Len = s1.length();
-	stop = line.find(s1);
+	stop = line.find(s1, 0);
 	newLine = "";
 	i = 0;
 	while (i < (int)line.length())
@@ -29,7 +29,7 @@ std::string	formatLine(std::string line, std::string s1, std::string s2)
 		{
 			newLine = newLine + s2;
 			i += s1Len;
-			stop = line.find(s1, stop);
+			stop = line.find(s1, stop + 1);
 		}
 		else
 		{
@@ -84,6 +84,11 @@ void	copyAndReplace(std::string filename, std::string s1, std::string s2)
 		line = formatLine(line, s1, s2);
 		newLine += line;
 		newLine = newLine + "\n";
+	}
+	if (line[(int)(line.size() - 1)] != '\n' && line != "")
+	{
+		std::cout <<  "{" << line <<"}" <<"ato\n";
+		newLine.pop_back();
 	}
 	MyNewFile << newLine;
 	MyNewFile.close();

@@ -10,19 +10,22 @@ OPT_FLAG = -std=c++98 -g
 
 RM = rm -f
 
-NAME = replace
+test = replace
 
-${NAME}:	${OBJS}
-			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
+${test}:	${OBJS}
+			${CC} ${CFLAGS} ${SRCS} -o ${test}
 
-all:	${NAME}
+all:	${test}
 
 clean:	
 		${RM} ${OBJS}
 
 fclean:	clean
-		${RM} ${NAME}
+		${RM} ${test}
 
 re:		fclean all
 
-.phony:	fclean all clean re 
+.phony:	fclean all clean re
+ #
+sfffffffffffffffff
+ 
