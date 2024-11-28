@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 03:55:19 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/14 09:35:14 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:29:18 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main()
 
 	hordeNb = 10;
 	horde = zombieHorde(hordeNb, "zombie");
+	if (horde == nullptr)
+		return (0);
 	for (int i=0; i < hordeNb; i++)
 	{
 		horde[0].announce();

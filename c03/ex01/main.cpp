@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 05:24:28 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 09:15:21 by trazanad         ###   ########.fr       */
+/*   Created: 2024/11/21 09:38:33 by trazanad          #+#    #+#             */
+/*   Updated: 2024/11/28 10:11:06 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
+#include "ScavTrap.hpp"
 
-# define HUMANB_HPP
-
-#include <iostream>
-#include <string>
-#include "Weapon.hpp"
-
-class HumanB
+int main()
 {
-	private:
-		std::string	name;
-		Weapon		*weapon;
-	public:
-		HumanB( std::string name );
-		void	attack( void );
-		void	setWeapon( Weapon &weapon );
-};
+    ScavTrap ScavTrap("Clappy");
 
-#endif 
+    ScavTrap.attack("Target1");
+
+    ScavTrap.takeDamage(3);
+
+    ScavTrap.beRepaired(5);
+
+    for (int i = 0; i < 11; ++i) {
+        ScavTrap.attack("Target2");
+    }
+
+    ScavTrap.takeDamage(15);
+    ScavTrap.attack("Target3");
+    ScavTrap.beRepaired(10);
+
+    return 0;
+}

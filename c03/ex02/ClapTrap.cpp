@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:02:40 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 09:42:38 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:46:55 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap( std::string name): _name(name), _hitPoint(10), _energyPoint(
     std::cout << "String constructor called" << std::endl;  
 }
 
-ClapTrap::ClapTrap( const ClapTrap & copy ):_name(copy.getName()), _hitPoint(copy.getHitPoint()), _energyPoint(copy.getEnergyPoint()), _attackDamage(copy.getAttackDamage())
+ClapTrap::ClapTrap( const ClapTrap & copy ):_name(copy._name), _hitPoint(copy._hitPoint), _energyPoint(copy._energyPoint), _attackDamage(copy._attackDamage)
 {
     std::cout << "Copy constructor called" << std::endl;  
 }
@@ -91,7 +91,7 @@ void	ClapTrap::beRepaired(unsigned int amount)
 	if (this->_energyPoint <= 0)
 		return ;
 	this->_hitPoint += amount;
-	std::cout << "ClapTrap " << this->_name << " repairs himself, his hitPoint increases to " << this->_hitPoint << std::endl;
+	std::cout << this->_name << " repairs himself, his hitPoint increases to " << this->_hitPoint << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -99,12 +99,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	unsigned int	prevHitPoint;
 	if (this->_hitPoint == 0)
 	{
-		std::cout << "ClapTrap " << this->_name << " has no hitPoint." << std::endl;
+		std::cout << this->_name << " has no hitPoint." << std::endl;
 		return ;
 	}
 	prevHitPoint = this->_hitPoint;
 	this->_hitPoint -= amount;
 	if (this->_hitPoint > prevHitPoint)
 		this->_hitPoint = 0;
-	std::cout << "ClapTrap " << this->_name << " takes damage, his hitPoint decreases to " << this->_hitPoint << std::endl;
+	std::cout << this->_name << " takes damage, his hitPoint decreases to " << this->_hitPoint << std::endl;
 }

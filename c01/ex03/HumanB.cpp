@@ -6,19 +6,24 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 05:32:01 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/14 09:54:35 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 09:18:00 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 
-HumanB::HumanB( std::string name )
+HumanB::HumanB( std::string name ): name(name), weapon(nullptr)
 {
-	this->name = name;
 }
 
 void	HumanB::attack( void )
 {
+	if (this->weapon == nullptr)
+	{
+		std::cout << this->name << " has no weapon yet!\n";
+		return ;
+	}
+	
 	Weapon		weapon = *(this->weapon);
 	std::string weapon_type = weapon.getType();
 

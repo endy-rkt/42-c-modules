@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 04:27:09 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/14 09:39:57 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:28:52 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	destroyHorde(Zombie *horde)
 
 Zombie*	zombieHorde( int N, std::string name )
 {
+	if (N <= 0)
+	{
+		std::cout << "Invalid number of zombie" << std::endl;
+		return (nullptr);
+	}
 	Zombie	*myzombieHorde = new Zombie[N];
 
 	for (int i = 0; i < N; i++)

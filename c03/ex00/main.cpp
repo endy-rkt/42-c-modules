@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:38:33 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/27 14:09:14 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/11/28 10:37:51 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 int main()
 {
     ClapTrap claptrap("Clappy");
+    ClapTrap foo(claptrap);
+    ClapTrap bar;
 
+    bar = foo;
     claptrap.attack("Target1");
+    bar.attack("Target2");
+    foo.attack("Target3");
 
     claptrap.takeDamage(3);
 

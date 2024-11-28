@@ -1,4 +1,4 @@
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp 
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -10,7 +10,7 @@ OPT_FLAG = -std=c++98 -g
 
 RM = rm -f
 
-NAME = clapTrap
+NAME = scavTrap
 
 %.o: %.cpp
 	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@

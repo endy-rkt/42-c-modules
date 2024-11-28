@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 05:24:28 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 09:15:21 by trazanad         ###   ########.fr       */
+/*   Created: 2024/11/21 09:38:33 by trazanad          #+#    #+#             */
+/*   Updated: 2024/11/28 10:13:17 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_HPP
+#include "FragTrap.hpp"
 
-# define HUMANB_HPP
-
-#include <iostream>
-#include <string>
-#include "Weapon.hpp"
-
-class HumanB
+int main()
 {
-	private:
-		std::string	name;
-		Weapon		*weapon;
-	public:
-		HumanB( std::string name );
-		void	attack( void );
-		void	setWeapon( Weapon &weapon );
-};
+    FragTrap fragTrap("Clappy");
 
-#endif 
+    fragTrap.attack("Target1");
+
+    fragTrap.takeDamage(3);
+
+    fragTrap.beRepaired(5);
+
+    for (int i = 0; i < 11; ++i) {
+        fragTrap.attack("Target2");
+    }
+
+    fragTrap.takeDamage(15);
+    fragTrap.attack("Target3");
+    fragTrap.beRepaired(10);
+
+    return 0;
+}
