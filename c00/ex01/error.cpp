@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:50:06 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/27 15:02:45 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 06:18:28 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,14 @@ std::string	get_input(std::string msg)
 
 	std::cout << msg;
 	std::getline(std::cin, input);
+	if (std::cin.eof())
+		std::cout << "Input can't be empty. " << msg;
 	while (is_empty(input))
 	{
 		std::cout << "Input can't be empty. " << msg;
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			std::cout << "Input can't be empty. " << msg;
 	}
 	return (input);
 }

@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:38:07 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/27 15:02:17 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 06:16:02 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,15 @@ int	main()
 	{
 		std::cout << "Please enter your command (ADD, SEARCH, HELP, EXIT): ";
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			break;
 		while (is_empty(input))
 		{
 			std::cout << "Input can't be empty. Please enter your command (ADD, SEARCH, HELP, EXIT): ";
 			std::getline(std::cin, input);
+			if (std::cin.eof())
+				break;
+
 		}
 		do_exit = execute_cmd(input, &my_phone_book);
 		if (do_exit)

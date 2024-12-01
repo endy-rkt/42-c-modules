@@ -1,29 +1,23 @@
-SRCS = Account.cpp tests.cpp
-
-OBJS = ${SRCS:.cpp=.o}
-
+NAME = account 
+SRC = ./Account.cpp ./tests.cpp
+OBJ = ${SRC:.cpp=.o}
 CC = c++
+CFLAGS = -std=c++98 -Wall -Wextra -Werror
 
-CFLAGS = -Wall -Wextra -Werror
+%.o : %.cpp
+	c++ -c ${CFLAGS} $< -o $@
 
-RM = rm -f
+${NAME}:	${OBJ}
+			${CC} ${CFLAGS} ${OBJ} -o ${NAME}
 
-NAME = account
+all:		${NAME}
 
-%.o: %.cpp
-	${CC}  -c $< -o $@
+clean:
+			rm -f ${OBJ}
 
-${NAME}:	${OBJS}
-			${CC}  ${SRCS} -o ${NAME}
+fclean:		clean
+			rm -f ${NAME}
 
-all:	${NAME}
+re:			fclean all
 
-clean:	
-		${RM} ${OBJS}
-
-fclean:	clean
-		${RM} ${NAME}
-
-re:		fclean all
-
-.phony:	fclean all clean re
+.phony:		fclean all clean re
