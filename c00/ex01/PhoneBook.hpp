@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:41:19 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/09 14:42:43 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 06:29:54 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 class PhoneBook
 {
 	private:
-		Contact	contacts[8];
+		Contact	_contacts[8];
 	public:
-		void	add_contact(Contact new_contact);
-		Contact	search_contact(int index);
+		void	addContact(Contact newContact);
+		Contact	searchContact(int index);
 };
 
 #endif

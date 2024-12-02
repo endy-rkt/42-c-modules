@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 10:50:50 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/01 06:20:34 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:25:29 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,79 +34,134 @@ void	print_info(std::string info)
 	}
 }
 
-void	show_help_info()
+std::string	formattedInfo(std::string info)
 {
-	std::cout << "To use the phone book, you have 4 commands.\n";
-	std::cout << "ADD:\ncreate a new contact in the repository.\n";
-	std::cout << "SEARCH:\nget all informations about a contact.\n";
-	std::cout << "HELP:\nread the manual info.\n";
-	std::cout << "EXIT:\nterminate the program\n";
+	int			len;
+	std::string	result;
+
+	result = "";
+	len = info.length();
+	for (int i = len; i < 10; i++)
+		result = " " + result;
+	result = result + info.substr(0, 9);
+	if (len >= 10)
+		result =  result + ".";
+	return (result);
 }
 
-bool	printRawTable(PhoneBook *my_phone)
+void	contactRow(Contact contact, int index)
 {
-	int		index;
-	Contact contact;
+	std::string info[4];
 
-	for (index = 0; index < 8; index++)
-	{
-		contact = my_phone->search_contact(index);
-		if (contact.get_first_name().empty())
-			break ;
-		contact.print_contact_info(index);
-	}
+	info[0] = formattedInfo(std::to_string(index)); 
+	info[1] = formattedInfo(contact.getFirstName()); 
+	info[2] = formattedInfo(contact.getLastName()); 
+	info[3] = formattedInfo(contact.getNickName()); 
+	std::cout << info[0] << "|" << info[1] << "|" <<  info[2] << "|" <<  info[3] << std::endl;
+}
+
+bool	printContactTable(PhoneBook *myPhone, int index)
+{
+	Contact	contact;
+
 	if (index == 0)
 	{
 		std::cout << "No contact with this index yet." << std::endl;
 		return (false);
 	}
+	std::cout << std::endl;
+	std::cout << "*******************************************" << std::endl;
+	std::cout << "     Index" << "|" << "First name" << "|" <<  " Last name" << "|" <<  "  Nickname" << std::endl;
+	std::cout << "*******************************************" << std::endl;
+	// std::cout << "----------" << "|" << "----------" << "|" <<  "----------" << "|" <<  "----------" << std::endl;
+	for (index = 0; index < 8; index++)
+	{
+		contact = myPhone->searchContact(index);
+		if (contact.getFirstName().empty())
+			break ;
+		contactRow(contact, index);
+	}
+	std::cout << "*******************************************" << std::endl;
+	std::cout << std::endl;
 	return (true);
 }
 
-void	select_contact(PhoneBook *my_phone)
+bool	printRawTable(PhoneBook *my_phone)
 {
 	int		index;
-	Contact	contact;
+	bool	noContact;
+	Contact contact;
+
+	for (index = 0; index < 8; index++)
+	{
+		contact = my_phone->searchContact(index);
+		if (contact.getFirstName().empty())
+			break ;
+	}
+	noContact = printContactTable(my_phone, index);
+	return (noContact);
+}
+
+int	selectContact(PhoneBook *my_phone)
+{
+	int			index;
+	std::string	strIndex;
+	Contact		contact;
 
 	if (!printRawTable(my_phone))
-		return ;
-	index = get_index("Please enter the contact index (between 0 to 7): ");
-	while (!(index >= 0 && index <= 7))
-	{
-		index = get_index("Out of range index. Please enter the contact index (between 0 to 7): ");
-	}
-	contact = my_phone->search_contact(index);
-	contact.print_contact_info(index);
+		return (0);
+	strIndex = getIndex("Enter the contact index (between 0-7): ");
+	if (is_empty(strIndex))
+		return (1);
+	index = atoi(strIndex.c_str());
+	contact = my_phone->searchContact(index);
+	contact.printContactInfo();
+	std::cout << std::endl;
+	return (0);
 }
 
-void	add_new_contact(PhoneBook *my_phone)
+int	addNewContact(PhoneBook *my_phone)
 {
-	int			number;
-	std::string	info[4];
+	std::string	info[5];
 	Contact		tmp;
 
-	info[0] = get_input("Enter the contact's first name: ");
-	info[1] = get_input("Enter the contact's last name: ");
-	info[2] = get_input("Enter the contact's nickname: ");
-	info[3] = get_input("Enter the contact's darkest secret: ");
-	number = get_number("Enter the contact's number: ");
-	tmp.set_contact(info[0], info[1], info[2], info[3], number);
-	my_phone->add_contact(tmp);
-	std::cout << "User added successfully!!!!\n";
+	info[0] = getInput("Enter the contact's first name: ");
+	if (is_empty(info[0]))
+		return (1);
+	info[1] = getInput("Enter the contact's last name: ");
+	if (is_empty(info[1]))
+		return (1);
+	info[2] = getInput("Enter the contact's nickname: ");
+	if (is_empty(info[2]))
+		return (1);
+	info[3] = getInput("Enter the contact's darkest secret: ");
+	if (is_empty(info[3]))
+		return (1);
+	info[4] = getInput("Enter the contact's number: ");
+	if (is_empty(info[4]))
+		return (1);
+	tmp.setContact(info[0], info[1], info[2], info[3], info[4]);
+	my_phone->addContact(tmp);
+	std::cout << std::endl;
+	std::cout << "Contact added successfully!!!!" << std::endl;
+	std::cout << std::endl;
+	return (0);
 }
 
-int	execute_cmd(std::string input, PhoneBook *my_phone)
+int	executeCmd(std::string input, PhoneBook *my_phone)
 {
+	int status;
+
+	status = 0;
 	if (input == "EXIT")
 		return (1);
 	else if (input == "ADD")
-		add_new_contact(my_phone);
+		status = addNewContact(my_phone);
 	else if (input == "SEARCH")
-		select_contact(my_phone);
-	else if (input == "HELP")
-		show_help_info();
+		status = selectContact(my_phone);
 	else
-		std::cout << "Command not recognized, please retry.\n";
-	std::cout << "------------------------------------------------------------------\n\n";
-	return (0);
+		std::cout << "Command not recognized, please retry." << std::endl;
+	if (status == 0)
+		std::cout << "-------------------------------------------------------------\n\n";
+	return (status);
 }

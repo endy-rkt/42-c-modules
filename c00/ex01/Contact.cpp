@@ -6,61 +6,59 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:30:54 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/27 15:09:39 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 07:15:25 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "utils.hpp"
 
-void	Contact::set_contact(std::string first_name, std::string last_name, std::string nickname,
-		std::string secret, int phone_number)
+void	Contact::setContact(std::string firstName, std::string lastName, std::string nickName,
+		std::string secret, std::string	phoneNumber)
 {
-	this->first_name = first_name;
-	this->last_name = last_name;
-	this->nickname = nickname;
+	this->firstName = firstName;
+	this->lastName = lastName;
+	this->nickName = nickName;
 	this->secret = secret;
-	this->phone_number = phone_number;
+	this->phoneNumber = phoneNumber;
 }
 
-std::string	Contact::get_first_name()
+std::string	Contact::getFirstName()
 {
-	return (this->first_name);
+	return (this->firstName);
 }
 
-std::string	Contact::get_last_name()
+std::string	Contact::getLastName()
 {
-	return (this->last_name);
+	return (this->lastName);
 }
 
-std::string	Contact::get_nick_name()
+std::string	Contact::getNickName()
 {
-	return (this->nickname);
+	return (this->nickName);
 }
 
-std::string	Contact::get_secret()
+std::string	Contact::getSecret()
 {
 	return (this->secret);
 }
 
-int	Contact::get_phone_number()
+std::string	Contact::getPhoneNumber()
 {
-	return (this->phone_number);
+	return (this->phoneNumber);
 }
 
-void	Contact::print_contact_info(int	index)
+int	Contact::printContactInfo( void )
 {
-	if (this->first_name.empty() && this->last_name.empty() 
-		&& this->nickname.empty())
+	if (this->firstName.empty())
 	{
 		std::cout << "No contact with this index yet." << std::endl;
-		return ;
+		return (0);
 	}
-	std::cout  << "        " <<  index << " | ";
-	print_info(this->first_name);
-	std::cout << " | ";
-	print_info(this->last_name);
-	std::cout << " | ";
-	print_info(this->nickname);
-	std::cout << std::endl;
+	std::cout << "First name:   " << this->firstName << std::endl;
+	std::cout << "Last name:    " << this->lastName << std::endl;
+	std::cout << "Nickname:     " << this->nickName << std::endl;
+	std::cout << "Dark secret:  " << this->secret << std::endl;
+	std::cout << "Phone number: " << this->phoneNumber << std::endl;
+	return (0);
 }

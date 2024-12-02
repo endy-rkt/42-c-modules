@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 14:50:06 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/01 06:18:28 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 23:48:18 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,29 @@ int	is_empty(std::string str)
 	return (0);
 }
 
-std::string	get_input(std::string msg)
+std::string	getInput(std::string msg)
 {
+	int			start = 0;
 	std::string	input;
 
 	std::cout << msg;
 	std::getline(std::cin, input);
 	if (std::cin.eof())
-		std::cout << "Input can't be empty. " << msg;
+		return ("");
 	while (is_empty(input))
 	{
 		std::cout << "Input can't be empty. " << msg;
 		std::getline(std::cin, input);
 		if (std::cin.eof())
-			std::cout << "Input can't be empty. " << msg;
+			return ("");
+	}
+	while ((input[start] >= '\a' && input[start] <= '\r') || input[start] == ' ')
+		start++;
+	input = input.substr(start, (int)input.length());
+	for (int i = input.length() - 1; i > 0; i--)
+	{
+		if ((input[i] >= '\a' && input[i] <= '\r') || input[i] == ' ')
+			input.pop_back();
 	}
 	return (input);
 }
@@ -59,35 +68,24 @@ int	is_number(std::string str)
 	return (1);
 }
 
-int	get_number(std::string msg)
+std::string	getIndex(std::string msg)
 {
 	int			number;
 	std::string input;
 
 	std::cout << msg;
 	std::getline(std::cin, input);
-	while (!is_number(input)) 
-	{
-		std::cout << "Invalid number input. " << msg;
-		std::getline(std::cin, input);
-	}
-	number = atoi(input.c_str());
-	return (number);
-}
-
-int	get_index(std::string msg)
-{
-	int			number;
-	std::string input;
-
-	std::cout << msg;
-	std::getline(std::cin, input);
+	if (std::cin.eof())
+		return ("");
 	number = atoi(input.c_str());
 	while (!is_number(input) && (number >=0 && number <= 7)) 
 	{
-		std::cout << "Invalid number input. " << msg;
+		std::cout << "Invalid number input. " << std::endl;
+		std::cout << msg;
 		std::getline(std::cin, input);
+		if (std::cin.eof())
+			return ("");
 		number = atoi(input.c_str());
 	}
-	return (number);
+	return (input);
 }

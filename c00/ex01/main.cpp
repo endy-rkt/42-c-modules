@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:38:07 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/01 06:16:02 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 16:24:00 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 int	main()
 {
-	int			do_exit;
-	PhoneBook	my_phone_book;
+	int			status;
+	PhoneBook	phoneBook;
 	std::string	input;
 
+	status = 0;	
 	while (1)
 	{
-		std::cout << "Please enter your command (ADD, SEARCH, HELP, EXIT): ";
+		std::cout << "Enter your command (ADD, SEARCH, HELP, EXIT): ";
 		std::getline(std::cin, input);
 		if (std::cin.eof())
-			break;
+			return (1);
 		while (is_empty(input))
 		{
-			std::cout << "Input can't be empty. Please enter your command (ADD, SEARCH, HELP, EXIT): ";
+			std::cout << "Make sure that the command is not empty." << std::endl; 
+			std::cout << "Enter your command (ADD, SEARCH, HELP, EXIT): ";
 			std::getline(std::cin, input);
 			if (std::cin.eof())
-				break;
-
+				return (1);
 		}
-		do_exit = execute_cmd(input, &my_phone_book);
-		if (do_exit)
-			return (0);
+		std::cout << std::endl;
+		status = executeCmd(input, &phoneBook);
+		if (status)
+			return (1);
 	}
 	return (0);	
 }

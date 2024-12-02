@@ -6,25 +6,25 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 05:25:18 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/09 14:43:42 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/01 07:13:45 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-void	PhoneBook::add_contact(Contact new_contact)
+void	PhoneBook::addContact(Contact newContact)
 {
 	static int	index = 0;
 
 	index = index % 8;
-	this->contacts[index] = new_contact;
+	this->_contacts[index] = newContact;
 	index++;
 }
 
-Contact	PhoneBook::search_contact(int index)
+Contact	PhoneBook::searchContact(int index)
 {
-	int	formatted_index;
+	int	formattedIndex;
 
-	formatted_index = index % 8;
-	return (this->contacts[formatted_index]);
+	formattedIndex = index % 8;
+	return (this->_contacts[formattedIndex]);
 }
