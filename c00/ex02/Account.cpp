@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 14:34:09 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/01 06:08:48 by trazanad         ###   ########.fr       */
+/*   Updated: 2024/12/31 03:29:27 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,16 @@ Account::Account( void )
 {
 	_accountIndex = _nbAccounts;
 	_amount = 0;
+	_nbWithdrawals = 0;
+	_nbDeposits = 0;
 	//static
 	_nbAccounts++;
 	_displayTimestamp();
-    std::cout << " index:" << _accountIndex 
+    std::cout << "index:" << _accountIndex 
               << ";amount:" << _amount 
               << ";created" << std::endl;
 }
-
+	
 Account::Account(int initial_deposit)
 {
 	_displayTimestamp();
@@ -42,6 +44,7 @@ Account::Account(int initial_deposit)
 	_accountIndex = _nbAccounts;
 	_amount = initial_deposit;
 	_nbDeposits = 0;
+	_nbWithdrawals = 0;
 	//static
 	_nbAccounts++;
 	_totalAmount += initial_deposit;
@@ -50,7 +53,7 @@ Account::Account(int initial_deposit)
 Account::~Account()
 {
 	_displayTimestamp();
-    std::cout << " index:" << _accountIndex 
+    std::cout << "index:" << _accountIndex 
               << ";amount:" << _amount 
               << ";closed" << std::endl;
 }
@@ -59,7 +62,7 @@ Account::~Account()
 void	Account::makeDeposit(int deposit)
 {
 	_displayTimestamp();
-    std::cout << " index:" << _accountIndex
+    std::cout << "index:" << _accountIndex
               << ";p_amount:" << _amount
               << ";deposit:" << deposit;
 	_amount += deposit;
@@ -125,7 +128,7 @@ int	Account::getNbWithdrawals( void )
 void	Account::displayAccountsInfos( void )
 {
 	_displayTimestamp();
-    std::cout << " accounts:" << getNbAccounts()
+    std::cout << "accounts:" << getNbAccounts()
               << ";total:" << getTotalAmount()
               << ";deposits:" << getNbDeposits()
               << ";withdrawals:" << getNbWithdrawals() 

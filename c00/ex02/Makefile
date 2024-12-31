@@ -1,8 +1,12 @@
-NAME = account 
+NAME = account
+
 SRC = ./Account.cpp ./tests.cpp
+
 OBJ = ${SRC:.cpp=.o}
+
 CC = c++
-CFLAGS = -std=c++98 -Wall -Wextra -Werror
+
+CFLAGS = -std=c++98 -g -Wall -Wextra -Werror
 
 %.o : %.cpp
 	c++ -c ${CFLAGS} $< -o $@
