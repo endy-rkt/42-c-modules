@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FragTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/28 10:01:19 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/31 09:31:17 by trazanad         ###   ########.fr       */
+/*   Created: 2024/11/28 09:22:52 by trazanad          #+#    #+#             */
+/*   Updated: 2024/12/31 10:10:10 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRAGTRAP_HPP
+#ifndef SCAVTRAP_HPP
 
-# define FRAGTRAP_HPP
+# define SCAVTRAP_HPP
 
 #include "ClapTrap.hpp"
 
-class FragTrap: public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
     public:
         //method
-        ~FragTrap( void );
-        FragTrap( void );
-        FragTrap( const std::string name );
-        FragTrap( const FragTrap & copy );
-        FragTrap & operator=(FragTrap const & copy);
+        ~ScavTrap( void );
+        ScavTrap( void );
+        ScavTrap( const std::string name );
+        ScavTrap( const ScavTrap & copy );
+        ScavTrap & operator=(ScavTrap const & copy);
         //method
         void    attack(const std::string& target);
         void    guardGate( void );
-        void    guarhighFivesGuysdGate( void );
 };
 
 #endif
