@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 15:30:25 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 04:44:45 by trazanad         ###   ########.fr       */
+/*   Created: 2025/01/02 05:05:49 by trazanad          #+#    #+#             */
+/*   Updated: 2025/01/02 05:07:32 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
+#ifndef WRONGCAT_HPP
 
-# define DOG_HPP
+#define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class Dog: public Animal
+class WrongCat: public WrongAnimal 
 {
-    public:
-        ~Dog( void );
-        Dog( void );
-        Dog( const Dog & copy);
-        Dog & operator=( const Dog & copy);
-        virtual void    makeSound() const;
+	protected: 
+		std::string	type;
+
+	public:
+		//constructor and destructor
+		~WrongCat( void );
+		WrongCat( void );
+		WrongCat( const WrongCat & copy );
+		WrongCat & operator=(const WrongCat & copy);
+
+		//method
+		void	makeSound( void ) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:32:13 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/30 15:32:45 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 04:44:49 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ Dog::~Dog( void )
     std::cout << "Destructor for Dog called!" << std::endl;
 }
 
-Dog::Dog( void ): Animal()
+Dog::Dog( void ): Animal("Dog")
 {
-    this->type = "Dog";
     std::cout << "Default constructor for Dog called!" << std::endl;
 }
 
@@ -32,10 +31,11 @@ Dog  & Dog::operator=( const Dog & copy )
 {
     if (this != &copy)
         this->type = copy.getType();
-    std::cout << "Copy assignment for Dog called!" << std::endl;    
+    std::cout << "Copy assignment for Dog called!" << std::endl;
+    return (*this);   
 }
 
-void    Dog::makeSound( void )
+void    Dog::makeSound( void ) const
 {
     std::cout << "wouf wouf..." << std::endl;
 }

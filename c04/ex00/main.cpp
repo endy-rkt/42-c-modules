@@ -6,29 +6,38 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 09:38:33 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 10:13:17 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 05:11:27 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FragTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
-    FragTrap fragTrap("Clappy");
+    const Animal* meta = new Animal();
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
+    std::cout << j->getType() << " " << std::endl;
+    std::cout << i->getType() << " " << std::endl;
+    i->makeSound(); //will output the cat sound!
+    j->makeSound();
+    meta->makeSound();
 
-    fragTrap.attack("Target1");
+    delete meta;
+    delete i;
+    delete j;
 
-    fragTrap.takeDamage(3);
+    //wrong animal test
+    const WrongAnimal* metaWrong = new WrongAnimal();
+    const WrongAnimal* iWrong = new WrongCat();
 
-    fragTrap.beRepaired(5);
+    std::cout << iWrong->getType() << " " << std::endl;
+    iWrong->makeSound();
+    metaWrong->makeSound();
 
-    for (int i = 0; i < 11; ++i) {
-        fragTrap.attack("Target2");
-    }
-
-    fragTrap.takeDamage(15);
-    fragTrap.attack("Target3");
-    fragTrap.beRepaired(10);
-
-    return 0;
+    delete metaWrong;
+    delete iWrong;
+    return (0);
 }

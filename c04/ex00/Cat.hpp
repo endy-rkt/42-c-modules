@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 11:18:08 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/30 11:28:34 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 04:44:27 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Cat: public Animal
         Cat( void );
         Cat( const Cat & copy);
         Cat & operator=( const Cat & copy);
-        void    makeSound() override;
+        virtual void    makeSound() const;
 };
 
 #endif
