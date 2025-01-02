@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:33:40 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/31 10:37:34 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 03:44:54 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,21 +32,10 @@ DiamondTrap::DiamondTrap( std::string name ):ClapTrap(name), FragTrap(name), Sca
 	std::cout << "String constructor called for DiamondTrap" << std::endl;  
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap & copy)
-    : ClapTrap(copy), FragTrap(copy), ScavTrap(copy)  // Ensure ClapTrap is initialized first, followed by FragTrap and ScavTrap
+DiamondTrap::DiamondTrap(const DiamondTrap & copy):ClapTrap(copy), FragTrap(copy), ScavTrap(copy) 
 {
     std::cout << "Copy constructor called for DiamondTrap" << std::endl;
-    // Optionally copy other members if needed
-    this->_name = copy._name;
-    this->_hitPoint = copy._hitPoint;
-    this->_energyPoint = copy._energyPoint;
-    this->_attackDamage = copy._attackDamage;
 }
-
-// DiamondTrap::DiamondTrap(const DiamondTrap & copy): ClapTrap(copy), ScavTrap(copy), FragTrap(copy)
-// {
-//     std::cout << "Copy constructor called for DiamondTrap" << std::endl;  
-// }
 
 DiamondTrap & DiamondTrap::operator=(DiamondTrap const & copy)
 {

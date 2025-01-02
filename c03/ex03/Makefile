@@ -10,7 +10,7 @@ OPT_FLAG = -std=c++98 -g
 
 RM = rm -f
 
-NAME = fragTrap
+NAME = diamondTrap
 
 %.o: %.cpp
 	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@
