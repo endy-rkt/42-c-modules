@@ -1,4 +1,4 @@
-SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp
 
 OBJS = ${SRCS:.cpp=.o}
 
@@ -10,7 +10,7 @@ OPT_FLAG = -std=c++98 -g
 
 RM = rm -f
 
-NAME = animal
+NAME = materia
 
 %.o: %.cpp
 	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@

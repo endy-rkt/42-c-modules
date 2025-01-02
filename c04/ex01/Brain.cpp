@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 05:21:09 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 06:22:27 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 10:47:40 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ Brain::Brain( void ):ideas(new std::string[100])
 	std::cout << "Default constructor for brain called!" << std::endl;
 }
 
-Brain::Brain( const Brain & copy )
+Brain::Brain( const Brain & copy ):ideas(new std::string[100])
 {
-	this->ideas = copy.getIdeas();
+	std::string	*copyIdeas = copy.getIdeas();
+	for (int i = 0; i < 100; i++)
+		this->ideas[i] = copyIdeas[i];
 	std::cout << "Copy constructor for brain called!" << std::endl;
 }
 
@@ -40,8 +42,16 @@ Brain::Brain( const std::string & str ):ideas(new std::string[100])
 
 Brain &Brain::operator=( const Brain & copy )
 {
+	std::string	*copyIdeas;
+
 	if (this != &copy)
-		this->ideas = copy.getIdeas();
+	{
+		delete [] this->ideas;
+		copyIdeas = copy.getIdeas();
+		this->ideas = new std::string[100];
+		for (int i = 0; i < 100; i++)
+			this->ideas[i] = copyIdeas[i];
+	}
 	std::cout << "Copy assignement for brain called!" << std::endl;
 	return (*this);
 }

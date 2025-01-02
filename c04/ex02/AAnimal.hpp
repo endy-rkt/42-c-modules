@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AAnimal.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 10:52:58 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 06:47:51 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 08:59:44 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
+#ifndef AANIMAL_HPP
 
-# define ANIMAL_HPP
+# define AANIMAL_HPP
 
 #include <iostream>
 #include <string>

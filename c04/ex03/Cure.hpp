@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/30 11:18:08 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 08:58:19 by trazanad         ###   ########.fr       */
+/*   Created: 2025/01/02 09:02:08 by trazanad          #+#    #+#             */
+/*   Updated: 2025/01/02 09:48:56 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
+#ifndef CURE_HPP
 
-# define CAT_HPP
+#define CURE_HPP
 
-#include "AAnimal.hpp"
-#include "Brain.hpp"
+#include "AMateria.hpp"
 
-class Cat: public AAnimal
+class	Cure: public AMateria
 {
-    private:
-        Brain   *brain;
-    public:
-        ~Cat( void );
-        Cat( void );
-        Cat( const Cat & copy);
-        Cat & operator=( const Cat & copy);
-        virtual void    makeSound() const;
-        Brain*  getBrain( void ) const;
+	public:
+		~Cure( void );
+		Cure( void );
+		Cure( Cure const & copy );
+		Cure &operator=( Cure const & copy );
+		virtual AMateria* clone() const;
+		virtual void use(ICharacter& target);
 };
 
 #endif

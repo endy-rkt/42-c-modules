@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 15:30:25 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 06:41:22 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/02 08:58:27 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 # define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Dog: public AAnimal
