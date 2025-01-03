@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:08:10 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 09:11:22 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:59:23 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define ICHARACTER_HPP
 
-#include "AMateria.hpp"
+class AMateria;
 
 class ICharacter
 {

@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:36:06 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/03 07:39:48 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:50:18 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,18 @@
 class MateriaSource: public IMateriaSource
 {
 	private:
-
+		AMateria*	_items[4];
+		int			*_itemIndex; //only 4
 	public:
 		~MateriaSource( void );
 		MateriaSource( void );
-		MateriaSource( IMateriaSource const & copy );
-		IMateriaSource  &operator=( IMateriaSource const & copy );
-		virtual void learnMateria(AMateria*);
+		MateriaSource( MateriaSource & copy );
+		MateriaSource  &operator=( MateriaSource & copy );//what if const
+		virtual void learnMateria(AMateria* m); //what is no params
 		virtual AMateria* createMateria(std::string const & type);
+		//getters
+		int*	getItemIndex( void );
+		AMateria*	getItem(int index);
 };
 
 #endif

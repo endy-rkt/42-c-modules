@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 05:21:09 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 10:46:04 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:17:59 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,7 @@ Brain &Brain::operator=( const Brain & copy )
 
 	if (this != &copy)
 	{
-		delete [] this->ideas;
 		copyIdeas = copy.getIdeas();
-		this->ideas = new std::string[100];
 		for (int i = 0; i < 100; i++)
 			this->ideas[i] = copyIdeas[i];
 	}

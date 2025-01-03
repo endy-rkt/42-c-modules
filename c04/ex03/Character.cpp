@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:04:37 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/03 08:58:55 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 09:55:17 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ Character::Character( Character & copy ):_name(copy.getName())
 			copyMateria = copy.getItem(i);
 			if (this->_itemIndex[i] != -1)
 				delete this->_items[i];
-			this->_items[i] = copyMateria->clone();
+			if (copyMateria)
+				this->_items[i] = copyMateria->clone();
+			else
+				this->_items[i] = 0;
 		}
 	}
 	std::cout << "Copy constructor for Character called!" << std::endl;
@@ -73,15 +76,19 @@ Character	& Character::operator=( Character & copy )
 	AMateria*	copyMateria;
 	int	*copyItemIndex = copy.getItemIndex();
 
+	this->_name = copy.getName();
 	for (int i = 0; i < 4; i++)
 	{
 		this->_itemIndex[i] = copyItemIndex[i];
 		if (copyItemIndex[i] != -1)
 		{
+			copyMateria = copy.getItem(i);
 			if (this->_itemIndex[i] != -1)
 				delete this->_items[i];
-			copyMateria = copy.getItem(i);
-			this->_items[i] = copyMateria->clone();
+			if (copyMateria)
+				this->_items[i] = copyMateria->clone();
+			else
+				this->_items[i] = 0;
 		}
 	}
 	std::cout << "Copy assignement for Character called!" << std::endl;
@@ -95,6 +102,8 @@ std::string const &	Character::getName() const
 
 void	Character::equip(AMateria* m)
 {
+	if (!m)
+		return ;
 	for (int i = 0; i < 4; i++)
 	{
 		if (this->_itemIndex[i] != 1)
@@ -119,9 +128,14 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
+	AMateria*	materia;
+
 	if (idx < 0 || idx > 3)
 		return ;
 	if (this->_itemIndex[idx] != 1)
 		return ;
-	(this->_items[idx])->use(target);
+	materia = this->_items[idx];
+	if (!materia)
+		return ;
+	materia->use(target);
 }

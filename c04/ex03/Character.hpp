@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 09:05:00 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/03 08:46:16 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 10:03:04 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 class Character: public ICharacter
 {
 	private:
-		AMateria*	_items[4];
-		int			*_itemIndex; //only 4
 		std::string	_name;
+		int			*_itemIndex; //only 4
+		AMateria*	_items[4];
 	public:
 		~Character( void );
 		Character( void );
@@ -41,9 +41,9 @@ class Character: public ICharacter
 		Character( Character & copy );
 		Character	&operator=( Character & copy );
 		std::string const &	getName() const;
-		void	equip(AMateria* m);
-		void	unequip(int idx);
-		void	use(int idx, ICharacter& target);
+		virtual void	equip(AMateria* m);
+		virtual void	unequip(int idx);
+		virtual void	use(int idx, ICharacter& target);
 		//getters
 		int*	getItemIndex( void );
 		AMateria*	getItem(int index);
