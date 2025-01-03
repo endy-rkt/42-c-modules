@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:34:01 by trazanad          #+#    #+#             */
-/*   Updated: 2024/12/31 10:28:46 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:08:09 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 #include "FragTrap.hpp"
 
-class DiamondTrap:  public FragTrap,   public ScavTrap
+class DiamondTrap:  public FragTrap, public ScavTrap
 {
 	protected:
 		std::string _name;

@@ -12,8 +12,11 @@ RM = rm -f
 
 NAME = harlFilter
 
+%.o: %.cpp
+	${CC} ${CFLAGS} ${OPT_FLAG} -c $< -o $@
+
 ${NAME}:	${OBJS}
-			${CC} ${CFLAGS} ${SRCS} -o ${NAME}
+			${CC} ${CFLAGS} ${OPT_FLAG} ${SRCS} -o ${NAME}
 
 all:	${NAME}
 

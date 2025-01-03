@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 07:20:42 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 14:14:25 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 01:36:32 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,28 @@ int	validateNewFile(std::ifstream &MyReadFile, std::ofstream &MyNewFile, std::st
 	return (1);
 }
 
+std::string	strimNewLine(std::string line, std::string newLine)
+{
+	int			lineSize;
+	int			newLineSize;
+	std::string	res;
+
+	lineSize = line.size();
+	if (lineSize == 0)
+		return (newLine);
+	if (line[lineSize - 1] != '\n' && line != "")
+	{
+		newLineSize = newLine.size();
+		if (newLineSize == 0)
+			return (newLine);
+		res = "";
+		for (int i = 0; i < newLineSize - 1; i++)
+			res = res + newLine[i];
+		return (res);
+	}
+	return (newLine);
+}
+
 void	copyAndReplace(std::string filename, std::string s1, std::string s2)
 {
 	std::string	line;
@@ -85,11 +107,7 @@ void	copyAndReplace(std::string filename, std::string s1, std::string s2)
 		newLine += line;
 		newLine = newLine + "\n";
 	}
-	if (line[(int)(line.size() - 1)] != '\n' && line != "")
-	{
-		std::cout <<  "{" << line <<"}" <<"ato\n";
-		newLine.pop_back();
-	}
+	newLine = strimNewLine(line, newLine);
 	MyNewFile << newLine;
 	MyNewFile.close();
 	MyReadFile.close();

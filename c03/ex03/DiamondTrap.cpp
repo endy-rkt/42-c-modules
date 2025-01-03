@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 09:33:40 by trazanad          #+#    #+#             */
-/*   Updated: 2025/01/02 03:44:54 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:05:51 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ DiamondTrap::~DiamondTrap( void )
 
 DiamondTrap::DiamondTrap( void ):ClapTrap(), FragTrap(), ScavTrap()
 {
-	this->_name = "diamond";
+	this->_name = "DiamondTrapDude";
     this->_energyPoint = 50;
     std::cout << "Default constructor called for DiamondTrap" << std::endl;
 }

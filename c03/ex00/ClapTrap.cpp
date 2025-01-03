@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 09:02:40 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 09:42:38 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 02:04:06 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ClapTrap::~ClapTrap( void )
     std::cout << "Destructor for claptrap " << this->_name << " called." << std::endl; 
 }
 
-ClapTrap::ClapTrap( void ): _name("dude"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
+ClapTrap::ClapTrap( void ): _name("ClapTrapDude"), _hitPoint(10), _energyPoint(10), _attackDamage(0)
 {
     std::cout << "Default constructor called" << std::endl;
 }

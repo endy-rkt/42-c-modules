@@ -6,7 +6,7 @@
 /*   By: trazanad <trazanad@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 08:26:08 by trazanad          #+#    #+#             */
-/*   Updated: 2024/11/28 10:32:33 by trazanad         ###   ########.fr       */
+/*   Updated: 2025/01/03 01:56:04 by trazanad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,13 @@ void Harl::complain( std::string level )
     {
         case 0:
             harl.debug();
+            /* fallthrough */
         case 1:
             harl.info();
+            /* fallthrough */
         case 2:
             harl.warning();
+            /* fallthrough */
         case 3:
             harl.error();
             break;
